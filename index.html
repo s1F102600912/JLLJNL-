@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JLL / JNL ドラフト×ドラフト</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>JLL / JNL ドラフト×ドラフト</h1>
+    <p class="subtitle">リーグ → シーズン → チーム → ドラフト順位 をルーレットで決めて、9人の打線を完成させよう</p>
+
+    <div class="card">
+      <div class="controls">
+        <button class="primary" onclick="spinDraft()">ルーレットを回す</button>
+    <button class="secondary" onclick="resetCurrent()">現在の抽選結果を消す</button>
+        <button class="danger" onclick="resetLineup()">スタメンをリセット</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>抽選結果</h2>
+      <div class="result-grid">
+        <div class="result-box">
+          <div class="label">リーグ</div>
+          <div class="value" id="league">-</div>
+        </div>
+        <div class="result-box">
+          <div class="label">シーズン</div>
+          <div class="value" id="season">-</div>
+        </div>
+        <div class="result-box">
+          <div class="label">チーム</div>
+          <div class="value" id="team">-</div>
+        </div>
+        <div class="result-box">
+          <div class="label">監督</div>
+          <div class="value" id="manager">-</div>
+        </div>
+        <div class="result-box">
+          <div class="label">ドラフト順位</div>
+          <div class="value" id="pick">-</div>
+        </div>
+        <div class="result-box">
+          <div class="label">選手</div>
+          <div class="value" id="player">-</div>
+        </div>
+      </div>
+      <div class="small">
+    </div>
+    </div>
+
+    <div class="card">
+      <h2>スタメンに追加</h2>
+      <div class="assign-area">
+        <div>
+          <label class="label" for="battingOrder">打順</label>
+          <select id="battingOrder">
+            <option value="">打順を選択</option>
+            <option value="1">1番</option>
+            <option value="2">2番</option>
+            <option value="3">3番</option>
+            <option value="4">4番</option>
+            <option value="5">5番</option>
+            <option value="6">6番</option>
+            <option value="7">7番</option>
+            <option value="8">8番</option>
+            <option value="9">9番</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="label" for="position">守備位置</label>
+          <select id="position">
+            <option value="">守備位置を選択</option>
+            <option value="投手">投手</option>
+            <option value="捕手">捕手</option>
+            <option value="一塁手">一塁手</option>
+            <option value="二塁手">二塁手</option>
+            <option value="三塁手">三塁手</option>
+            <option value="遊撃手">遊撃手</option>
+            <option value="左翼手">左翼手</option>
+            <option value="中堅手">中堅手</option>
+            <option value="右翼手">右翼手</option>
+            <option value="DH">DH</option>
+          </select>
+        </div>
+
+        <div>
+          <button class="success" onclick="addToLineup()">追加する</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>スタメン表</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">打順</th>
+              <th scope="col">守備位置</th>
+              <th scope="col">選手名</th>
+              <th scope="col">リーグ</th>
+              <th scope="col">シーズン</th>
+              <th scope="col">チーム</th>
+              <th scope="col">順位</th>
+            </tr>
+          </thead>
+          <tbody id="lineupTable"></tbody>
+        </table>
+      </div>
+      <div id="completeMessage" class="completed" style="display:none;">スタメン完成！</div>
+    </div>
+  </div>
+    <script src="move.js"></script>
+</body>
+</html>
